@@ -21,7 +21,6 @@
 // solution with dp for lesser time complexity
 class Solution {
     public int climbStairs(int n) {
-        int sum=0;
         int[] dp= new int[n+1];
         Arrays.fill(dp,-1);    
        dp[n]=1;
@@ -33,6 +32,6 @@ class Solution {
             else 
                 dp[i]=dp[i+1]+dp[i+2];  
         }
-       return dp[sum];
+       return dp[0];
     }
 }
