@@ -86,3 +86,32 @@ public static void main(String[] args) {
           }
        System.out.println(dp[n-1][3]);
     }
+
+//tabular way with space optimization 
+public static void main(String[] args) {
+        int  n=3;
+       int[][] arr={{10,40,70},{20,50,80},{30,60,90}};
+    int dp[]=new int[4];
+         Arrays.fill(dp,-1);
+         
+        dp[0]=Math.max(arr[0][1],arr[0][2]);
+        dp[1]=Math.max(arr[0][0],arr[0][2]);
+         dp[2]=Math.max(arr[0][0],arr[0][1]);
+         int tempmax=Math.max(arr[0][1],arr[0][2]);
+          dp[3]=Math.max(tempmax,arr[0][0]); 
+          int points=0;
+          
+          for(int i=1;i<n;i++){
+              int[] temp=new int[4];
+              for(int j=0;j<=3;j++){
+                temp[j]=0;
+                for(int k=0;k<=2;k++){
+            if(k!=j)
+             points=arr[i][k]+dp[k];
+           temp[j]=Math.max( temp[j],points);
+           
+        }
+        }dp=temp;
+          }
+       System.out.println(dp[3]);
+    }
