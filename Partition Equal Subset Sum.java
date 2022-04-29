@@ -72,6 +72,8 @@ public boolean canPartition(int[] nums) {
             Arrays.fill(r,false);
         for(int i=0;i<nums.length;i++)
             dp[i][0]=true;
+      if(nums[0]<=target)  dp[0][nums[0]]=true;
+        
         for(int i=1;i<nums.length;i++){
             for(int tar=1;tar<=target;tar++){
                 
@@ -85,6 +87,4 @@ public boolean canPartition(int[] nums) {
         }
         return dp[nums.length-1][target];
     }
-}
-
 
