@@ -13,6 +13,7 @@ public class Solution {
 		
 		return Math.min(pick,notPick);
 	}
+	
     public static int minimumElements(int num[], int x) {
         // Write your code here..
 		int res=countCoins(num.length-1,x,num);
