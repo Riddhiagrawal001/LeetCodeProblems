@@ -93,6 +93,11 @@ public class Solution {
 }
 
 //optimizing 2 arrys to  just 1 array
+// in case of Knapsaxk 0-1 we were having a problem while running loop from 0 to wt 
+// because in that for each iteration we want previous array back data( non updated data)
+// hence we had to run a  loop from wt to 0
+// in this case we can run a loop from 0 to wt beacuse we want current array back data ( updated data)
+// hence thi doesn't cause problem from running loop from 0 to wt
 import java.util.*;
 public class Solution {
     public static int unboundedKnapsack(int n, int w, int[] profit, int[] weight) {
