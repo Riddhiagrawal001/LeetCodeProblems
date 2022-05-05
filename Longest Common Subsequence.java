@@ -100,3 +100,57 @@ class Solution {
         return dp[len2];
     }
 }
+
+
+// to print the longest common subsequece 
+import java.util.*;
+class HelloWorld {
+    
+    public static void main(String[] args) {
+        String s1="abcde";
+        String s2="bdgek";
+        int len1=s1.length();
+            int len2=s2.length();
+        int[][] dp=new int[len1+1][len2+1];
+        for(int[] r : dp)
+            Arrays.fill(r,0);
+        for(int i=0;i<=len2;i++)
+            dp[0][i]=0;
+        for(int j=0;j<=len1;j++)
+            dp[j][0]=0;
+
+        for(int i=1;i<=len1;i++){
+            for(int j=1;j<=len2;j++){
+              // if character matches
+                if(s1.charAt(i-1)==s2.charAt(j-1))
+                  dp[i][j]=1+dp[i-1][j-1];
+              // if the charcter does not matches
+                else {
+                    dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]); 
+                }
+
+            }
+
+        }
+
+        int n =dp[len1][len2]; 
+        Character[] ans=new Character[n];
+        Arrays.fill(ans,'-');
+        int index=n-1;
+        int i=len1;int j=len2;
+        while(i>0 && j >0){
+            if(s1.charAt(i-1)==s2.charAt(j-1)){
+                ans[index]=s1.charAt(i-1);
+                index--;
+                i--;
+                j--;
+            }
+            else if(dp[i-1][j]>dp[i][j-1]) i--;
+            else j--;
+        }
+        StringBuilder s=new StringBuilder();
+        for(Character c : ans)
+          s.append(c);
+        System.out.println(s);
+    }
+}
