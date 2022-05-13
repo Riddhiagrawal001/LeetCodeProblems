@@ -140,3 +140,37 @@ class Solution {
       return maxi;  
     }
 }
+
+// method with tc:O(nlog n ) sc:O(n)
+import java.io.*;
+import java.util.*;
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int m =nums.length; 
+         ArrayList<Integer> temp=new ArrayList<Integer>();
+        temp.add(nums[0]);
+        int len=1;
+        for(int i=1;i<m;i++){
+            if(nums[i]>temp.get(len-1)){
+                temp.add(nums[i]);
+                len++;
+            }
+               
+            else {
+                int index=Arrays.binarySearch(temp.toArray(),nums[i]);
+                if(index>=0){
+                     temp.set(index,nums[i]);
+                    
+                }
+                else {
+                   int temp_index=Math.abs(index);
+                    temp.set(temp_index-1,nums[i]);
+                }
+               
+                
+            }
+            
+        }
+        return temp.size();
+    }
+}
